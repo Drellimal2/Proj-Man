@@ -1,0 +1,18 @@
+.locker_group{
+	padding:5px;
+	background-color: #4e94b5;
+	margin: 4px;
+	border-radius: 7px;
+}
+
+.locker{
+	border-radius: 5px;
+	background-color: white;
+	margin-top: 5px;
+	min-height: 100px;
+	padding: 3px;
+}
+
+.available{
+	background-color: #13ef98;
+}

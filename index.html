@@ -1,0 +1,46 @@
+<html ng-app="HARDBMS">
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  <meta name="description" content="My Parse App">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+  <script src="/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+		<!-- Bootstrap -->
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+	<script src="bootstrap/js/jquery-2.1.4.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery-ui.min.js"></script>
+	<script src="bootstrap/js/jquery.min.js"></script>
+  
+  
+  <script type="text/javascript" src="/js/init.js"></script>
+  <script src="/js/loginctrl.js"></script>
+
+</head>
+
+<body ng-controller="LoginCtrl">
+  <h1>Welcome to B.M.S</h1>
+  
+  <h2>Login</h2>
+  <div ng-form="yikes">
+  	<form novalidate class="simple-form">
+		Username: 
+		<input type="text" /><br />
+		Password: 
+		<input type="password"/><br />
+		
+		<button class="button btn btn-default" ng-click="update()">Login</button>
+  </form>
+  </div>
+  
+</body>
+
+</html>

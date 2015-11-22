@@ -1,0 +1,58 @@
+<html ng-app="HARDBMS">
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+  <script src="/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+		<!-- Bootstrap -->
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+	<script src="bootstrap/js/jquery-2.1.4.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery-ui.min.js"></script>
+	<script src="bootstrap/js/jquery.min.js"></script>
+  
+  
+  <script type="text/javascript" src="/js/init.js"></script>
+  <script src="/js/controller.js"></script>
+
+</head>
+
+<body ng-controller="MainCtrl" class = "container">
+<h1>Hello, {{user}}</h1>
+ <button class="btn btn-info" ng-click="getlockers()">Hi</button>
+ <uib-tabset justified="true">
+    <uib-tab heading="Lockers" select="setlockers()">
+    	
+   </uib-tab>
+   
+    <uib-tab heading="SJ">Short Labeled Justified content</uib-tab>
+    <uib-tab heading="Long Justified">Long Labeled Justified content</uib-tab>
+  </uib-tabset>
+ 
+ <div class="col-md-12 " ng-show="showlockers">
+		<div ng-repeat="locker_group in lockers" class="locker_group col-md-2">
+			<div ng-repeat="locker in locker_group" class="locker" ng-class="isavailable(locker)">
+				<div>{{locker.number}}</div>
+				<div>{{locker.user}}</div>
+
+			</div>
+</div>
+<!--
+ 	<ul>
+  <li ng-repeat="locker in lockers">{{ locker.number }}</li>
+ </ul> 
+-->
+ 	
+ </div>
+ 
+</body>
+
+</html>
