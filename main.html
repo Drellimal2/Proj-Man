@@ -29,7 +29,7 @@
 
 </head>
 
-<body ng-controller="MainCtrl" class = "container">
+<body ng-controller="MainCtrl" class = "container" id="main_body">
 	<h1 id="greetings_main">Hello, <em>{{user}}</em></h1>
 <div id="options">
 	What would you like to view:
@@ -41,6 +41,9 @@
 	  <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
 	</button>
  </div>
+ <hr/>
+ <br/>
+ 
  
  <div id="choice_lockers" ng-if="radioModel=='Lockers'">
 	
@@ -52,21 +55,22 @@
 		<uib-tab heading="In Use" select="setmode(2)"></uib-tab>
 		<uib-tab heading="Empty" select="setmode(3)"></uib-tab>
 	  </uib-tabset>
-
+	<br/>
 	 <div class="col-md-12" ng-if="mode==1">
 			<div ng-repeat="locker_group in lockers" class="locker_group col-md-2">
-				<div ng-repeat="locker in locker_group" class="locker" ng-class="isavailable(locker)">
-					<div>{{locker.number}}</div>
-					<div>{{locker.user}}</div>
+				<div ng-repeat="locker in locker_group" class="locker" ng-class="isavailable(locker)" ng-click="open(locker)">
+					<div  class="lock_num">{{locker.number}}</div>
+					<div class="lock_user">{{locker.user}}</div>
+					<div class="lock_time" ng-if="locker.time!=''">{{getmin(locker)}}</div>
 
 				</div>
 		</div>
 		</div>
 	<div class="col-md-12" ng-if="mode==2">
-		<div ng-repeat="lockerz in used" class="col-md-2">
+		<div ng-repeat="lockerz in used" class="col-md-2" ng-click="open(lockerz)">
 				<div class="usedlocker">
 					<div>{{lockerz.number}}</div>
-					<div>{{lockerz.user}}</div>
+					<div  class="lock_user">{{lockerz.user}}</div>
 				</div>
 
 	</div>
@@ -87,21 +91,58 @@
  
  <div ng-if="radioModel=='Stats'">
  	<uib-tabset justified="true" >
-		<uib-tab heading="Statistics" select="setmode2(1)">
+		<uib-tab heading="Statistics" select="setmode2(1)" ng-click="makechart()">
 
 	   </uib-tab>
 
 		<uib-tab heading="Logs" select="setmode2(2)"></uib-tab>
 	  </uib-tabset>
+	  <br/>
 	  <div id='choice_stats' ng-if="mode2==1">
  			<div id="chartdiv"></div>
+ 			
+ 			<br/>
+ 			<div class="locker_stats" ng-repeat="stat in stats">
+ 				{{stat.msg}}
+ 			</div>
+ 			<div class="blankspace"></div>
+ 			<div id="footer">
+			Produced by H.A.R.D.
+		</div>
  		</div>
  		<div id='choice_stats' ng-if="mode2==2">
  			<div >
  				<div ng-repeat="log in logs" ng-class="log.type" role="alert">{{log.date}} : {{log.message}}</div>
  			</div>
  		</div>
+ 		
  </div>
+ 
+ 
+ 	<script type="text/ng-template" id="myModalContent2.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Locker #{{selected.get("number")}}</h3>
+        </div>
+        <div class="modal-body">
+
+       		<div>
+       			<div >
+       			Used By {{selected.user}}
+					</br>
+      			Reserved at {{selected.time}}
+      			<br/>
+      			
+       			</div>
+       			
+       			
+       		</div>
+       		
+       		
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()" >OK</button>
+        </div>
+    </script>
 </body>
 
 </html>

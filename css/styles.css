@@ -1,6 +1,6 @@
 .locker_group{
 	padding:5px;
-	background-color: #4e94b5;
+	background-color: #444464;
 	margin: 4px;
 	border-radius: 2px;
 }
@@ -79,6 +79,7 @@
 }
 
 #greetings_main{
+	font-family: "Buxton Sketch";
 	text-align: left;
 	margin-left: 40px;
 	
@@ -86,4 +87,32 @@
 
 #options{
 	font-size: 15px;
+}
+
+#main_body{
+	background: #fafafa;
+}
+
+.lock_user{
+	font-size: 20px;
+	text-align: center;
+	font-family: "Buxton Sketch";
+	margin-top: 5px;
+}
+
+.lock_time{
+	text-align: center;
+	font-family: "Buxton Sketch";
+	color: #9f9fcf;
+}
+
+.locker_stats{
+	margin-left: 20px;
+	font-size: 15px;
+	color: #7fbf7f;
+	margin-top: 12px;
+}
+
+.blankspace{
+	padding: 20px;
 }
