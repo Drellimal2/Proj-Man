@@ -26,21 +26,26 @@
 
 </head>
 
-<body ng-controller="LoginCtrl">
-  <h1>Welcome to B.M.S</h1>
-  
-  <h2>Login</h2>
-  <div ng-form="yikes">
-  	<form novalidate class="simple-form">
-		Username: 
-		<input type="text" /><br />
-		Password: 
-		<input type="password"/><br />
-		
-		<button class="button btn btn-default" ng-click="update()">Login</button>
-  </form>
-  </div>
-  
+<body ng-controller="LoginCtrl" id="loginpage">
+	<div class="container" >
+		<h1 id="welcome_login">Welcome to B.M.S</h1>
+		<div id="loginform">
+			<h2 id="login">Login</h2>
+			<hr/>
+			<div ng-form="yikes">
+				<form novalidate class="simple-form">
+					Username: <input type="text" ng-model="user.name" ng-required="true" ng-change="hidealert()" class="form-control"/><br />
+					Password: <input type="password" class="form-control" ng-required="true" ng-change="hidealert()" ng-model="user.password"/><br />
+					<button class="button btn btn-default" ng-click="update(user); showalert()">Login</button>
+				</form>
+			</div>
+			<uib-alert type="{{alert.type}}" ng-show='alert.show'>{{alert.msg}}</uib-alert>
+
+		</div>
+	</div>
+	<div id="footer">
+		Produced by H.A.R.D.
+	</div>
 </body>
 
 </html>

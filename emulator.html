@@ -1,0 +1,84 @@
+<html ng-app="HARDBMS">
+<head>
+  <meta charset="utf-8">
+
+  <title>My Parse App</title>
+  
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+  <script src="http://www.amcharts.com/lib/3/pie.js"></script>
+  <script src="http://www.amcharts.com/lib/3/themes/light.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  <script type="text/javascript" src="/js/angular.min.js"></script>
+  <script src="/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+
+		<!-- Bootstrap -->
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+	<script src="bootstrap/js/jquery-2.1.4.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="bootstrap/js/jquery-ui.min.js"></script>
+	<script src="bootstrap/js/jquery.min.js"></script>
+  
+  
+  <script type="text/javascript" src="/js/init.js"></script>
+  <script src="/js/emulator.js"></script>
+
+</head>
+
+<body ng-controller="EmulatorCtrl" class = "container">
+	<div id="emulator" ng-model="emulator" ng-init="emulator=0">
+	<button class="btn btn-default"  ng-click="emulator=1"  >Start Emulator</button>
+	 <div class="col-md-12" >
+			<div ng-repeat="locker_group in lockers" class="locker_group col-md-2">
+				<div ng-repeat="locker in locker_group" class="locker" ng-class="isavailable(locker)" ng-click="open(locker)">
+					<div>{{locker.get("number")}}</div>
+					<div>{{locker.get("user")}}</div>
+
+				</div>
+		</div>
+	</div>
+	</div>
+	
+	<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Locker #{{selected.get("number")}}</h3>
+        </div>
+        <div class="modal-body">
+<!--
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+-->
+<!--            Selected: <b>{{ selected.item }}</b>-->
+       		<div>
+       			<div ng-if="selected.get('user') == ''">
+       			Reserved By:
+       			<input ng-model="log.user" value="{{selected.get('user')}}" type="text" class="form-control"/>
+       			</div>
+       			<div ng-if="selected.get('user') != ''">
+       			Used By {{selected.get('user')}}
+					</br>
+      			Checkout by:
+       			<input ng-model="log.user" type="text" class="form-control"/>
+       			</div>
+       			
+       			
+       		</div>
+       		
+       		
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()" ng-if="selected.get('user') == ''">OK</button>
+            <button class="btn btn-primary" type="button" ng-click="checkout()" ng-if="selected.get('user') !=''">Checkout</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</body>
+
+</html>
